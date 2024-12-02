@@ -1,5 +1,7 @@
 package com.spring.lab.service;
 
+import com.spring.lab.DTO.CustomerDTo;
+import com.spring.lab.DTO.Message;
 import com.spring.lab.hateoas.HateoasData;
 import com.spring.lab.model.CustomerModel;
 import com.spring.lab.repository.CustomerRepository;
@@ -15,11 +17,18 @@ public class CustomerService {
     private final ApplicationContext applicationContext;
 
     @Autowired
-    public CustomerService(CustomerRepository customerRepository, MethodLink methodLink, ApplicationContext applicationContext) {
+    public CustomerService(
+            CustomerRepository customerRepository,
+            MethodLink methodLink,
+            ApplicationContext applicationContext,
+            Message message
+    )
+    {
         this.customerRepository = customerRepository;
         this.methodLink = methodLink;
         this.applicationContext = applicationContext;
     }
+
 
     public HateoasData<CustomerModel> saveCustomer (CustomerModel customerModel){
         CustomerModel customer = customerRepository.save(customerModel);
@@ -35,6 +44,25 @@ public class CustomerService {
 
         return hateoasData;
 
+    }
+
+    public HateoasData<Message> updateCustomerService(int id, CustomerDTo customerDTo){
+
+        Message updateResponse = customerRepository.updateCustomer(id, customerDTo);
+
+        // Create a new HateoasData instance for each request
+        HateoasData<Message> hateoasData = applicationContext.getBean(HateoasData.class);
+
+        hateoasData.setContent(updateResponse);
+        hateoasData.addLink(methodLink.get(id));
+        hateoasData.addLink(methodLink.delete(id));
+
+        return hateoasData;
+    }
+
+    public Message deleteCustomerService(int id){
+        Message deleteMessage = customerRepository.deleteCustomer(id);
+        return deleteMessage;
     }
 
 }
