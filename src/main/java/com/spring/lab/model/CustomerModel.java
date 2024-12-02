@@ -1,5 +1,8 @@
 package com.spring.lab.model;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CustomerModel {
     private int id;
     private String name;

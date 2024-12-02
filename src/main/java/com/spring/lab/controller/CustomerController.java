@@ -8,6 +8,8 @@ import com.spring.lab.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/customer") // Base path for customer-related endpoints
 public class CustomerController {
@@ -36,6 +38,11 @@ public class CustomerController {
            @PathVariable String id
     ){
         return customerService.deleteCustomerService(Integer.parseInt(id));
+    }
+
+    @GetMapping("/")
+    public List<CustomerModel> findAllCustomers() {
+        return customerService.findAllCustomerService();
     }
 
 }

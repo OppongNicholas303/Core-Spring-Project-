@@ -10,6 +10,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import java.sql.PreparedStatement;
+import java.util.List;
 
 @Repository
 public class CustomerRepository {
@@ -79,4 +80,17 @@ public Message deleteCustomer(int id){
         return null;
     }
 }
+
+public List<CustomerModel> findAllCustomers(){
+    String sql = "SELECT id, name, email FROM customer";
+
+    return jdbcTemplate.query(sql, (resultSet, rowNum) -> {
+        CustomerModel customer = new CustomerModel();
+        customer.setId(resultSet.getInt("id"));
+        customer.setName(resultSet.getString("name"));
+        customer.setEmail(resultSet.getString("email"));
+        return customer;
+    });
+}
+
 }

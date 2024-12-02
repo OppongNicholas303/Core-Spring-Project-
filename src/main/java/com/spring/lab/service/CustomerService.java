@@ -10,23 +10,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
     private final CustomerRepository customerRepository;
     private final MethodLink methodLink;
     private final ApplicationContext applicationContext;
+    private final CustomerModel customerModel;
 
     @Autowired
     public CustomerService(
             CustomerRepository customerRepository,
             MethodLink methodLink,
             ApplicationContext applicationContext,
-            Message message
-    )
+            CustomerModel customerModel)
     {
         this.customerRepository = customerRepository;
         this.methodLink = methodLink;
         this.applicationContext = applicationContext;
+        this.customerModel = customerModel;
     }
 
 
@@ -63,6 +66,11 @@ public class CustomerService {
     public Message deleteCustomerService(int id){
         Message deleteMessage = customerRepository.deleteCustomer(id);
         return deleteMessage;
+    }
+
+    public List<CustomerModel> findAllCustomerService(){
+        List<CustomerModel> allCustomers = customerRepository.findAllCustomers();
+        return allCustomers;
     }
 
 }
