@@ -38,69 +38,32 @@ public class SortingService {
     }
 
     public String heapSortService(String input, String order) {
-
-        System.out.println(input);
-
-        String [] split = input.split(",");
-
-        List<Integer> intArray = new ArrayList<>();
-
-        for(int i = 0; i < split.length; i++) {
-            intArray.add(Integer.parseInt(split[i].trim()));
-        }
-
-        List<Integer> sortedList = heapSort.sort(intArray, order);
-
-        System.out.println("sort " +sortedList.toString());
-
+        List<Integer> convertedToInt    = inputToArray.toIntArray(input);
+        List<Integer> sortedList = heapSort.sort(convertedToInt, order);
         return sortedList.toString();
     }
 
     public String quickSortService(String input, String order) {
-        String[] split = input.split(",");
-        List<Integer> intArray = new ArrayList<>();
-
-        for (int i = 0; i < split.length; i++) {
-            intArray.add(Integer.parseInt(split[i].trim()));
-        }
-
-        List<Integer> sortedList = quickSort.sort(intArray, order);
+        List<Integer> convertedToInt    = inputToArray.toIntArray(input);
+        List<Integer> sortedList = quickSort.sort(convertedToInt, order);
         return sortedList.toString();
     }
 
     public String mergeSortService(String input, String order) {
-        String[] split = input.split(",");
-        List<Integer> intArray = new ArrayList<>();
-
-        for (int i = 0; i < split.length; i++) {
-            intArray.add(Integer.parseInt(split[i]));
-        }
-
-        List<Integer> sortedList = mergeSort.sort(intArray, order);
+        List<Integer> convertedToInt    = inputToArray.toIntArray(input);
+        List<Integer> sortedList = mergeSort.sort(convertedToInt, order);
         return sortedList.toString();
     }
 
     public String bucketSortService(String input, String order) {
-        String[] split = input.split(",");
-        List<Integer> intArray = new ArrayList<>();
-
-        for (int i = 0; i < split.length; i++) {
-            intArray.add(Integer.parseInt(split[i]));
-        }
         List<Integer> convertedToInt    = inputToArray.toIntArray(input);
         List<Integer> sortedList = bucketSort.sort(convertedToInt, order);
         return sortedList.toString();
     }
 
     public String radixSortService(String input, String order) {
-        String[] split = input.split(",");
-        List<Integer> intArray = new ArrayList<>();
-
-        for (int i = 0; i < split.length; i++) {
-            intArray.add(Integer.parseInt(split[i]));
-        }
-        System.out.println("sortRadix " +intArray.toString());
-        List<Integer> sortedList = radixSort.sort(intArray, order);
+        List<Integer> convertedToInt    = inputToArray.toIntArray(input);
+        List<Integer> sortedList = radixSort.sort(convertedToInt, order);
         return sortedList.toString();
     }
 }

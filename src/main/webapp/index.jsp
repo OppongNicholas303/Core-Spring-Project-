@@ -27,7 +27,8 @@
                 <option value="heap-sort">Heap Sort</option>
                 <option value="quick">Quick Sort</option>
                 <option value="merge">Merge Sort</option>
-                <option value="bubble">Bubble Sort</option>
+                <option value="radix">Radix Sort</option>
+                <option value="bucket">Bucket Sort</option>
             </select>
         </div>
 
