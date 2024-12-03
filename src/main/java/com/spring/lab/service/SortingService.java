@@ -38,30 +38,40 @@ public class SortingService {
     }
 
     public String heapSortService(String input, String order) {
+
+        //Convert the input string into int array
         List<Integer> convertedToInt    = inputToArray.toIntArray(input);
         List<Integer> sortedList = heapSort.sort(convertedToInt, order);
         return sortedList.toString();
     }
 
     public String quickSortService(String input, String order) {
+
+        //Convert the input string into int array
         List<Integer> convertedToInt    = inputToArray.toIntArray(input);
         List<Integer> sortedList = quickSort.sort(convertedToInt, order);
         return sortedList.toString();
     }
 
     public String mergeSortService(String input, String order) {
+
+        //Convert the input string into int array
         List<Integer> convertedToInt    = inputToArray.toIntArray(input);
         List<Integer> sortedList = mergeSort.sort(convertedToInt, order);
         return sortedList.toString();
     }
 
     public String bucketSortService(String input, String order) {
+
+        //Convert the input string into int array
         List<Integer> convertedToInt    = inputToArray.toIntArray(input);
         List<Integer> sortedList = bucketSort.sort(convertedToInt, order);
         return sortedList.toString();
     }
 
     public String radixSortService(String input, String order) {
+
+        //Convert the input string into int array
         List<Integer> convertedToInt    = inputToArray.toIntArray(input);
         List<Integer> sortedList = radixSort.sort(convertedToInt, order);
         return sortedList.toString();
